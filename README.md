@@ -1,5 +1,7 @@
 # CEUB · Laboratório de Entrega Contínua com .NET 10
 
+**Aluno:** Renzo Machado Alves Vaz · RA 22511589 · CEUB · DevOps 2026/2 · Prof. Daniel Lim-Apo
+
 API mínima em C# (.NET 10) entregue por dois workflows do GitHub Actions:
 
 - **CI e Staging** (`.github/workflows/ci-staging.yml`): em cada push na `main`, restaura, compila, testa, publica, constrói **uma** imagem Docker e a guarda como artefato (`release-<SHA>`: TAR, manifest, `image-id.txt`, `SHA256SUMS`). Um runner self-hosted (label `ceub-cd`) baixa esse pacote, confere os checksums e implanta em staging (`127.0.0.1:8081`).
@@ -82,7 +84,7 @@ Cada mudança da flag recriou o container, com uma breve interrupção. Mudar a 
 
 ## Gate manual, estratégia e limites
 
-- **Gate manual**: produção só recebe uma versão quando alguém dispara *Promover para Producao* com o run ID de um *CI e Staging* bem-sucedido na `main`. O job `validar-origem` confere isso pela API. Isso é **Continuous Delivery**: cada candidato aprovado está pronto, mas a decisão de implantar é humana e fica registrada. Os environments `staging` e `production` existem, mas sem regras de proteção (nenhum *required reviewer*). Os planos Free, Pro e Team restringem esse recurso em repositórios privados, e o repositório continua privado. Por isso o gate é uma decisão registrada de quem dispara o workflow, não uma revisão independente por outra pessoa.
+- **Gate manual**: produção só recebe uma versão quando alguém dispara *Promover para Producao* com o run ID de um *CI e Staging* bem-sucedido na `main`. O job `validar-origem` confere isso pela API. Isso é **Continuous Delivery**: cada candidato aprovado está pronto, mas a decisão de implantar é humana e fica registrada. Os environments `staging` e `production` existem, mas sem regras de proteção (nenhum *required reviewer*). Os planos Free, Pro e Team restringem esse recurso em repositórios privados, e o repositório era privado durante todas as execuções. Ele foi tornado público só depois, para a avaliação, com o runner self-hosted já desligado. Por isso o gate é uma decisão registrada de quem dispara o workflow, não uma revisão independente por outra pessoa.
 - **Estratégia**: o `deploy.sh` implementa **recreate**. Ele para o container ativo, renomeia para `-previous` e inicia o novo na mesma porta. Há uma janela de indisponibilidade, e as duas versões nunca atendem ao mesmo tempo, então não é blue-green. O predecessor parado serve só para rollback. A feature flag foi usada junto, como controle de exposição.
 - **Limites do ambiente local**: staging e produção compartilham o mesmo PC, o mesmo Docker e o mesmo runner, sem isolamento nem alta disponibilidade. As APIs só respondem em `127.0.0.1`. O rollback guarda um único predecessor e não trata dados. O artefato expira em 7 dias. Não há registry, TLS, métricas, tracing nem alertas. Logs ficam no `docker logs` e no Actions. Uma produção real acrescentaria registry com digest, identidade, ambientes isolados e observabilidade centralizada.
 
@@ -107,4 +109,4 @@ Cada mudança da flag recriou o container, com uma breve interrupção. Mudar a 
 - [x] Extensão C: a feature flag altera a resposta sem mudar a imagem.
 - [x] O README liga cada evidência ao commit e à execução.
 
-Arquivos brutos (saídas de curl/docker e logs dos jobs) estão em [`evidencias/`](evidencias/).
+Arquivos brutos (saídas de curl/docker e logs dos jobs) estão em [`evidencias/`](evidencias/). PDF de comprovação: [`evidencias/Comprovacao-Laboratorio-CD-Renzo-Vaz-22511589.pdf`](evidencias/Comprovacao-Laboratorio-CD-Renzo-Vaz-22511589.pdf).
