@@ -1,0 +1,5 @@
+## etapa 29 2026-11-16T19:02:13-03:00
+{"aplicacao":"CEUB Delivery API","versao":"1.0.1","commit":"3135b472bb62a91b1e04c3341849567761cdd5bb","ambiente":"Staging"}
+{"status":"ok","versao":"1.0.1","commit":"3135b472bb62a91b1e04c3341849567761cdd5bb"}
+[{"id":1,"descricao":"API publicada","status":"Concluida"},{"id":2,"descricao":"Smoke test executado","status":"Concluida"}]
+ceub-api:3135b472bb62a91b1e04c3341849567761cdd5bb / sha256:7519315c4d915f247c7d25ca311b641d37c006295db051d263f9d97714062f32

@@ -1,0 +1,5 @@
+## etapa 34: mesma run, falha=false
+{"id":43966949095,"status":"completed","conclusion":"success","run_number":3,"head_sha":"6ec6d9193dc263dd9bad084d6fa47a18cf1bb131","html_url":"https://github.com/renzovaz/ceub-cd-dotnet10/actions/runs/43966949095"}
+  validar-origem: success  (job 133648781824)
+  production: success  (job 133648852247)
+{"aplicacao":"CEUB Delivery API","versao":"1.0.3","commit":"6ec6d9193dc263dd9bad084d6fa47a18cf1bb131","ambiente":"Production"}

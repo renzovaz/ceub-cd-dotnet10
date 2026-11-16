@@ -1,0 +1,17 @@
+{"id":43966274643,"status":"completed","conclusion":"failure","run_number":2,"head_sha":"aa31f6d44610041f6040526317546b1ddd88a3d0","html_url":"https://github.com/renzovaz/ceub-cd-dotnet10/actions/runs/43966274643"}
+  build: failure  (job 133646429602)
+  staging: skipped  (job 133646695847)
+8081: 3135b472bb62a91b1e04c3341849567761cdd5bb
+8082: 3135b472bb62a91b1e04c3341849567761cdd5bb
+  Set up job: success
+  Run actions/checkout@v4: success
+  Run actions/setup-dotnet@v5: success
+  Restore: success
+  Build: success
+  Test: failure
+  Publish: skipped
+  Empacotar a imagem uma unica vez: skipped
+  Armazenar pacote de entrega: skipped
+  Post Run actions/setup-dotnet@v5: skipped
+  Post Run actions/checkout@v4: success
+  Complete job: success

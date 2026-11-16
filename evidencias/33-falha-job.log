@@ -1,0 +1,100 @@
+﻿2026-11-16T22:05:56.3920652Z Current runner version: '2.338.2'
+2026-11-16T22:05:56.3925790Z Runner name: 'brooklyn-ceub'
+2026-11-16T22:05:56.3926318Z Runner group name: 'Default'
+2026-11-16T22:05:56.3926965Z Machine name: 'brooklyn'
+2026-11-16T22:05:56.3928878Z ##[group]GITHUB_TOKEN Permissions
+2026-11-16T22:05:56.3930686Z Actions: read
+2026-11-16T22:05:56.3931081Z Contents: read
+2026-11-16T22:05:56.3931444Z Metadata: read
+2026-11-16T22:05:56.3931802Z ##[endgroup]
+2026-11-16T22:05:56.3933390Z Secret source: Actions
+2026-11-16T22:05:56.3934012Z Cache mode: write
+2026-11-16T22:05:56.3934481Z Prepare workflow directory
+2026-11-16T22:05:56.4313678Z Prepare all required actions
+2026-11-16T22:05:56.4353945Z Getting action download info
+2026-11-16T22:05:56.9423129Z Download action repository 'actions/download-artifact@v4' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+2026-11-16T22:05:57.5344888Z Complete job name: production
+2026-11-16T22:05:57.6028981Z ##[group]Run actions/download-artifact@v4
+2026-11-16T22:05:57.6029925Z with:
+2026-11-16T22:05:57.6030497Z   name: release-6ec6d9193dc263dd9bad084d6fa47a18cf1bb131
+2026-11-16T22:05:57.6031103Z   run-id: 43966398877
+2026-11-16T22:05:57.6034808Z   github-token: ***
+2026-11-16T22:05:57.6035423Z   path: /home/wsl/actions-runner-ceub/_work/_temp/ceub-prod-43966640140-1
+2026-11-16T22:05:57.6036122Z   merge-multiple: false
+2026-11-16T22:05:57.6036593Z   repository: renzovaz/ceub-cd-dotnet10
+2026-11-16T22:05:57.6037341Z ##[endgroup]
+2026-11-16T22:05:57.7394199Z Downloading single artifact
+2026-11-16T22:05:57.7448205Z (node:22272) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-16T22:05:57.7449465Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-16T22:05:57.7606113Z (node:22272) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-16T22:05:58.1163595Z Preparing to download the following artifacts:
+2026-11-16T22:05:58.1165127Z - release-6ec6d9193dc263dd9bad084d6fa47a18cf1bb131 (ID: 14276087658, Size: 97752594, Expected Digest: sha256:3c65c941a905f71260e418bd78e4686aa5c1ce6cf6603e287990b76578643fc7)
+2026-11-16T22:05:58.1195457Z Downloading artifact '14276087658' from 'renzovaz/ceub-cd-dotnet10'
+2026-11-16T22:05:58.4871362Z Redirecting to blob download url: https://productionresultssa30.blob.core.windows.net/actions-results/2996b12c-1603-820c-8390-438de4e1be9e/workflow-job-run-4551e402-f938-5739-abaa-bd2724517c34/artifacts/e402199bbf6e717a219a07772794072c2caae426391505ad68da534d078dcb87.zip
+2026-11-16T22:05:58.4883550Z Starting download of artifact to: /home/wsl/actions-runner-ceub/_work/_temp/ceub-prod-43966640140-1
+2026-11-16T22:05:59.0856637Z (node:22272) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-11-16T22:06:19.8352683Z SHA256 digest of downloaded artifact is 3c65c941a905f71260e418bd78e4686aa5c1ce6cf6603e287990b76578643fc7
+2026-11-16T22:06:19.8353331Z Artifact download completed successfully.
+2026-11-16T22:06:19.8353776Z Total of 1 artifact(s) downloaded
+2026-11-16T22:06:19.8360229Z Download artifact has finished successfully
+2026-11-16T22:06:19.8549710Z ##[group]Run set -euo pipefail
+2026-11-16T22:06:19.8550102Z set -euo pipefail
+2026-11-16T22:06:19.8550366Z sha256sum -c SHA256SUMS
+2026-11-16T22:06:19.8550667Z grep -Fx "commit=$EXPECTED_SHA" manifest.txt
+2026-11-16T22:06:19.8551012Z grep -Fx "run_id=$SOURCE_RUN_ID" manifest.txt
+2026-11-16T22:06:19.8551331Z docker load -i api-image.tar
+2026-11-16T22:06:19.8551864Z IMAGE="$(cat image.txt)"
+2026-11-16T22:06:19.8552375Z test "$(docker image inspect --format '{{.Id}}' "$IMAGE")" = "$(cat image-id.txt)"
+2026-11-16T22:06:19.8552844Z bash deploy.sh production "$IMAGE" "$FAIL_HEALTH" "$FEATURE"
+2026-11-16T22:06:19.8553414Z cat manifest.txt
+2026-11-16T22:06:19.8553768Z curl --fail http://127.0.0.1:8082/
+2026-11-16T22:06:19.8613365Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-11-16T22:06:19.8613721Z env:
+2026-11-16T22:06:19.8613925Z   FAIL_HEALTH: true
+2026-11-16T22:06:19.8614187Z   FEATURE: false
+2026-11-16T22:06:19.8614404Z   SOURCE_RUN_ID: 43966398877
+2026-11-16T22:06:19.8614689Z   EXPECTED_SHA: 6ec6d9193dc263dd9bad084d6fa47a18cf1bb131
+2026-11-16T22:06:19.8614990Z ##[endgroup]
+2026-11-16T22:06:20.0399982Z api-image.tar: OK
+2026-11-16T22:06:20.0400370Z deploy.sh: OK
+2026-11-16T22:06:20.0401089Z image.txt: OK
+2026-11-16T22:06:20.0402059Z image-id.txt: OK
+2026-11-16T22:06:20.0402330Z manifest.txt: OK
+2026-11-16T22:06:20.0412773Z commit=6ec6d9193dc263dd9bad084d6fa47a18cf1bb131
+2026-11-16T22:06:20.0422479Z run_id=43966398877
+2026-11-16T22:06:20.8403007Z Loaded image: ceub-api:6ec6d9193dc263dd9bad084d6fa47a18cf1bb131
+2026-11-16T22:06:21.3568116Z f3eb43c4892c5a13217adaebc21232fb5fca6694e4466802d163859f20c0108c
+2026-11-16T22:06:21.4958877Z curl: (56) Recv failure: Connection reset by peer
+2026-11-16T22:06:23.5690953Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:25.5821692Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:27.5939015Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:29.6060271Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:31.6183557Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:33.6307452Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:35.6427617Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:38.4813980Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:40.4936805Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:42.5016010Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:44.5250119Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:46.5346345Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:48.5472011Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:50.5595570Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:52.5718656Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:56.3906776Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:06:58.4023415Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:07:00.4144711Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:07:02.4280739Z curl: (22) The requested URL returned error: 503
+2026-11-16T22:07:04.4652656Z info: Microsoft.Hosting.Lifetime[14]
+2026-11-16T22:07:04.4657146Z       Now listening on: http://[::]:8080
+2026-11-16T22:07:04.4657453Z info: Microsoft.Hosting.Lifetime[0]
+2026-11-16T22:07:04.4657730Z       Application started. Press Ctrl+C to shut down.
+2026-11-16T22:07:04.4658019Z info: Microsoft.Hosting.Lifetime[0]
+2026-11-16T22:07:04.4658266Z       Hosting environment: Production
+2026-11-16T22:07:04.4658537Z info: Microsoft.Hosting.Lifetime[0]
+2026-11-16T22:07:04.4658828Z       Content root path: /app
+2026-11-16T22:07:05.0126988Z curl: (56) Recv failure: Connection reset by peer
+2026-11-16T22:07:07.1117979Z {"status":"ok","versao":"1.0.1","commit":"3135b472bb62a91b1e04c3341849567761cdd5bb"}[{"id":1,"descricao":"API publicada","status":"Concluida"},{"id":2,"descricao":"Smoke test executado","status":"Concluida"}]
+2026-11-16T22:07:07.1118813Z ROLLBACK OK: container anterior restaurado.
+2026-11-16T22:07:07.1131783Z ##[error]Process completed with exit code 1.
+2026-11-16T22:07:07.1215665Z Cleaning up orphan processes
+2026-11-16T22:07:07.1385066Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

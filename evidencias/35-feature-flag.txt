@@ -1,0 +1,16 @@
+## etapa 35: novidade=false (resultado da etapa 34)
+novidade 404
+sha256:6b81ea686f249e6758fcc2b2b20bb293f1892c5fa6de14384c21c2243d731059
+## novidade=true
+{"id":43967129640,"status":"completed","conclusion":"success","run_number":4,"head_sha":"6ec6d9193dc263dd9bad084d6fa47a18cf1bb131","html_url":"https://github.com/renzovaz/ceub-cd-dotnet10/actions/runs/43967129640"}
+  validar-origem: success  (job 133649398908)
+  production: success  (job 133649464652)
+HTTP/1.1 200 OK
+{"mensagem":"Nova consulta de entregas liberada!"}
+sha256:6b81ea686f249e6758fcc2b2b20bb293f1892c5fa6de14384c21c2243d731059
+## novidade=false de novo
+{"id":43967303526,"status":"completed","conclusion":"success","run_number":5,"head_sha":"6ec6d9193dc263dd9bad084d6fa47a18cf1bb131","html_url":"https://github.com/renzovaz/ceub-cd-dotnet10/actions/runs/43967303526"}
+  validar-origem: success  (job 133650010270)
+  production: success  (job 133650073342)
+novidade 404
+sha256:6b81ea686f249e6758fcc2b2b20bb293f1892c5fa6de14384c21c2243d731059
