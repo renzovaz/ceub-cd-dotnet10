@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Ceub.Api/Ceub.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Ceub.Api.Tests/Ceub.Api.Tests.csproj" />
+  </Folder>
+</Solution>
